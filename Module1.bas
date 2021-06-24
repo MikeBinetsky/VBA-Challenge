@@ -43,7 +43,6 @@ Range("N4").Value = "Greatest Total Volume"
 
 totalstock = 0
 
-ws.Activate
 
 lastrow = Cells(Rows.Count, 1).End(xlUp).Row
 ticker = 2
@@ -144,6 +143,12 @@ Range("P2").Value = greatestincrease
 Range("P3").Value = greatestdecrease
 Range("P4").Value = greatestvolume
 Range("P2 : P3").NumberFormat = "0.00%"
+
+'Why is this at the end instead of the beginning?
+'Well, for some reason putting this at the beginning of the loop makes this not work correctly.
+'To be honest, I'm not sure why. It works identically on every sheet but the last one when this is at the beginning
+'When this is at the beginning it doesn't add the headers like it should. Weird right? Not sure why. But it works now!
+ws.Activate
 
 Next ws
 
